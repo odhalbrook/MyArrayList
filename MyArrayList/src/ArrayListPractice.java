@@ -7,7 +7,8 @@ public class ArrayListPractice
 			{
 				FillArray();
 				printTemps();
-
+				convertTemps();
+				removeAndHighLow();
 			}
 
 		private static void FillArray()
@@ -28,13 +29,44 @@ public class ArrayListPractice
 			{
 				for(double s : temp)
 					{
-						System.out.println(s);
+						System.out.println(s + " degrees Fahrenheit");
 					}
 				
-				for(int i = 0; i < temp.size() + 1; i++)
+				for(int i = 0; i < temp.size(); i++)
 					{
-						
+						if (temp.get(i) > 98.6)
+							{
+								System.out.println("You have a fever of " + temp.get(i));
+							}
 					}
+				
+			}
+		private static void convertTemps()
+			{
+				for(int i = 0; i < temp.size(); i++)
+					{
+						temp.set(i, temp.get(i) - 32);
+						temp.set(i, temp.get(i) / 2);
+						System.out.println(temp.get(i) + " degrees Celcius");
+					}
+				
+			}
+		private static void removeAndHighLow()
+			{
+				for(int i = 0; i < temp.size(); i++)
+					{
+						if(temp.get(i) > 33.4)
+							{
+								temp.remove(i);
+							}
+						else
+							{
+							System.out.println(temp.get(i) + ", you are healthy");
+							}
+					}
+				
+				System.out.println(temp.get(0) + ", you have the lowest temprature");
+				System.out.println(temp.get(temp.size() - 1) + " you almost have a fever");
 				
 			}
 
